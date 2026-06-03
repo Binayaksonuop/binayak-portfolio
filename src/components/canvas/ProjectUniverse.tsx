@@ -282,14 +282,14 @@ export const ProjectUniverse = () => {
     <group position={[0, 0, 0]}> {/* Position controlled by Scene.tsx */}
       <ProjectWorld projectData={projectsData.a4mam} position={[0, 0, 0]} />
       
-      {/* Spread out other projects so they are visible and distinct */}
-      <ProjectWorld projectData={projectsData.lms} position={[-15, 8, -5]} />
+      {/* Spread out other projects so they are visible within the camera's 45deg FOV */}
+      <ProjectWorld projectData={projectsData.lms} position={[-6, 4, -4]} />
       
-      <ProjectWorld projectData={projectsData.office} position={[15, 6, -10]} />
+      <ProjectWorld projectData={projectsData.office} position={[7, 3, -6]} />
       
-      <ProjectWorld projectData={projectsData.hrms} position={[-12, -10, 5]} />
+      <ProjectWorld projectData={projectsData.hrms} position={[-5, -4, -2]} />
       
-      <ProjectWorld projectData={projectsData.school} position={[14, -8, 2]} />
+      <ProjectWorld projectData={projectsData.school} position={[6, -4, -3]} />
     </group>
   );
 };
