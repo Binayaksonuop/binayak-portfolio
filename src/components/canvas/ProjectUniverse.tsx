@@ -199,10 +199,14 @@ const ProjectWorld = ({
     e.stopPropagation();
     // Cinematic camera fly-through into the project
     // Move camera to just slightly in front of the object
+    const worldX = position[0] + 0;
+    const worldY = position[1] - 140;
+    const worldZ = position[2] - 10;
+
     gsap.to(camera.position, {
-      x: position[0],
-      y: position[1],
-      z: position[2] + 4,
+      x: worldX,
+      y: worldY,
+      z: worldZ + 4,
       duration: 2.5,
       ease: 'expo.inOut'
     });
@@ -221,6 +225,7 @@ const ProjectWorld = ({
 
   return (
     <group
+      position={position}
       onPointerOver={(e) => { e.stopPropagation(); setHovered(true); document.body.style.cursor = 'pointer'; }}
       onPointerOut={() => { setHovered(false); document.body.style.cursor = 'default'; }}
       onClick={handleClick}
@@ -241,7 +246,7 @@ const ProjectWorld = ({
       <ProjectAura />
       
       {/* Title that appears on hover + Screen Reader Access */}
-      <Html position={[position[0], position[1] + 4, position[2]]} center style={{ transition: 'opacity 0.5s', opacity: hovered ? 1 : 0 }}>
+      <Html position={[0, 4, 0]} center style={{ transition: 'opacity 0.5s', opacity: hovered ? 1 : 0 }}>
         <div style={{
           fontFamily: 'var(--font-heading)',
           fontSize: '2rem',
@@ -264,7 +269,7 @@ const ProjectWorld = ({
       </Html>
 
       {/* Hitbox for easier clicking */}
-      <mesh position={position} visible={false}>
+      <mesh position={[0, 0, 0]} visible={false}>
         <sphereGeometry args={[4, 16, 16]} />
         <meshBasicMaterial />
       </mesh>
