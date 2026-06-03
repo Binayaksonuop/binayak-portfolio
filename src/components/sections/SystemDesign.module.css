@@ -180,3 +180,72 @@
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.statsContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.detailCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.resumeFlexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.resumeButtons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .statsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .details {
+    flex-direction: column;
+  }
+  
+  .diagramInteractiveContainer {
+    padding: 1.5rem;
+  }
+
+  .resumeFlexContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  
+  .resumeButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .resumeButtons a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+

@@ -138,3 +138,24 @@
 .footerTech {
   color: rgba(39, 201, 63, 0.8) !important; /* Green terminal text */
 }
+
+@media (max-width: 768px) {
+  .terminalContainer {
+    padding: 6rem 1rem 1rem 1rem;
+  }
+  
+  .terminal {
+    width: 95%;
+    padding: 1.5rem;
+    min-height: auto;
+  }
+  
+  .link {
+    font-size: 1.1rem;
+  }
+  
+  .inputLine {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}

@@ -35,8 +35,7 @@ export const PerformanceEngineering = () => {
         <h2 className={styles.title} ref={titleRef}>
           Performance Engineering
         </h2>
-        
-        <div style={{ display: 'flex', justifyContent: 'space-around', margin: '3rem 0', flexWrap: 'wrap', gap: '2rem' }}>
+        <div className={styles.statsContainer}>
           <div style={{ textAlign: 'center' }}>
             <div style={{ fontSize: '3rem', color: '#00E5FF', fontFamily: 'monospace', textShadow: '0 0 10px rgba(0,229,255,0.5)' }}>100</div>
             <div style={{ color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Lighthouse Performance</div>

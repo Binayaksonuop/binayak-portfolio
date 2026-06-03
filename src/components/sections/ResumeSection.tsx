@@ -59,7 +59,7 @@ export const ResumeSection = () => {
       </style>
       
       <div className="resume-container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '3rem' }}>
+        <div className={styles.resumeFlexContainer}>
           
           <div style={{ flex: 1, minWidth: '300px' }}>
             <div style={{ display: 'inline-block', padding: '0.4rem 1rem', background: 'rgba(0, 229, 255, 0.1)', border: '1px solid rgba(0, 229, 255, 0.2)', borderRadius: '20px', color: 'var(--accent-cyan)', fontFamily: 'monospace', fontSize: '0.85rem', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
@@ -76,7 +76,7 @@ export const ResumeSection = () => {
               A comprehensive overview of my professional journey, highlighting 1+ years of experience engineering scalable interfaces with React, Angular, and TypeScript.
             </p>
             
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <div className={styles.resumeButtons}>
               <a 
                 href="/Binayak_Maharana_Resume.pdf" 
                 target="_blank" 
