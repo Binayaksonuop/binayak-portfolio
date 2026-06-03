@@ -1,0 +1,31 @@
+
+
+export const Experience = () => {
+  // Empty space to let the Time Tunnel 3D component shine, 
+  // we just need enough height to scroll through it
+  return (
+    <section style={{ height: '200vh', pointerEvents: 'none' }}>
+      <div style={{ position: 'sticky', top: '50%', textAlign: 'center', opacity: 0.1 }}>
+        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', letterSpacing: '0.2em' }}>
+          ENTERING TIME TUNNEL
+        </h2>
+      </div>
+    </section>
+  );
+};
+
+export const Projects = () => {
+  // Empty space for the Project Universe
+  return (
+    <section style={{ height: '200vh', pointerEvents: 'none' }}>
+      <div style={{ position: 'sticky', top: '10%', textAlign: 'center', opacity: 0.8, color: 'white' }}>
+        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '3rem', textTransform: 'uppercase', textShadow: '0 0 20px rgba(255,255,255,0.5)' }}>
+          Project Universe
+        </h2>
+        <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-secondary)', marginTop: '1rem' }}>
+          Select a world to enter.
+        </p>
+      </div>
+    </section>
+  );
+};

@@ -1,0 +1,16 @@
+{
+  "name": "Binayak Maharana Portfolio",
+  "short_name": "Binayak 3D",
+  "description": "Portfolio of Binayak Maharana, a Frontend Engineer specializing in immersive 3D web experiences.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

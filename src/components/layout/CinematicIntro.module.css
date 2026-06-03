@@ -1,0 +1,138 @@
+.introContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #020617;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+/* CRT Scanline Effect */
+.scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.terminalContainer {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  max-width: 800px;
+  font-family: monospace;
+  color: #00E5FF;
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+  text-shadow: 0 0 5px rgba(0, 229, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.terminalLine {
+  opacity: 0; /* Animated via GSAP */
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.phaseIdentity {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  width: 100%;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.role {
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin: 0;
+}
+
+.techStack {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+}
+
+.progressBarContainer {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 2px;
+  background: rgba(0, 229, 255, 0.2);
+  z-index: 10;
+  opacity: 0;
+}
+
+.progressBarFill {
+  height: 100%;
+  width: 0%; /* Animated via GSAP */
+  background: #00E5FF;
+  box-shadow: 0 0 10px #00E5FF;
+}
+
+.progressText {
+  position: absolute;
+  top: -25px;
+  right: 0;
+  font-family: monospace;
+  color: #00E5FF;
+  font-size: 0.9rem;
+}
+
+/* Glitch Effect Classes */
+.glitch {
+  animation: glitch-anim 0.2s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@keyframes glitch-anim {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}

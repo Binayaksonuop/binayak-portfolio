@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap');
+
+:root {
+  --bg-color: #020617;
+  --secondary-color: #0F172A;
+  --accent-cyan: #00E5FF;
+  --accent-purple: #8B5CF6;
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  
+  --font-heading: 'Clash Display', sans-serif;
+  --font-body: 'Geist', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  /* Lenis scroll setup: hide default scrollbar but keep functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Base utility classes for layout */
+/* Accessibility: Focus styles */
+:focus-visible {
+  outline: 3px solid var(--accent-cyan);
+  outline-offset: 4px;
+  border-radius: 2px;
+  transition: outline-offset 0.1s ease;
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--accent-cyan);
+  outline-offset: 4px;
+}
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none; /* Let HTML capture clicks by default, re-enable for specific 3D elements if needed */
+}
+
+.canvas-container canvas {
+  pointer-events: auto; /* Enable interaction on the canvas itself */
+}
+
+.html-overlay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  pointer-events: none; /* Let scroll happen, but pointer events on specific children */
+}
+
+.html-overlay > * {
+  pointer-events: auto;
+}
+
+/* Magnetic Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
+}
+
+.custom-cursor.active {
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  border: 1px solid var(--text-primary);
+}
