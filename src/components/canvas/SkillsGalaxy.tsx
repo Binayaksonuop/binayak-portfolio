@@ -83,7 +83,7 @@ export const SkillsGalaxy = () => {
   const planetYOffsets = useMemo(() => skills.map(() => (Math.random() - 0.5) * 2), []);
 
   return (
-    <group position={[0, -40, 0]} ref={galaxyRef}>
+    <group ref={galaxyRef}>
       {/* Central Star */}
       <mesh>
         <sphereGeometry args={[2, 32, 32]} />
