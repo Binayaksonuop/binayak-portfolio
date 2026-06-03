@@ -2,6 +2,7 @@ import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import * as THREE from 'three';
+import styles from './TimeTunnel.module.css';
 
 const tunnelVertexShader = `
   varying vec2 vUv;
@@ -162,52 +163,35 @@ export const TimeTunnel = () => {
       {experiences.map((exp, index) => (
         <group key={index} position={exp.position}>
           <Html center distanceFactor={15} zIndexRange={[100, 0]} transform>
-            <div style={{
-              background: `rgba(0, 0, 0, 0.6)`,
-              border: `1px solid ${exp.color}`,
-              boxShadow: `0 0 20px ${exp.color}40, inset 0 0 20px ${exp.color}20`,
-              padding: '2rem',
-              borderRadius: '12px',
-              backdropFilter: 'blur(10px)',
-              color: 'white',
-              fontFamily: 'var(--font-body)',
-              textAlign: 'center',
-              width: '450px',
-              transform: 'scale(0.5)',
-              pointerEvents: 'auto'
-            }}>
-              <h3 style={{ 
-                fontFamily: 'var(--font-heading)', 
-                color: exp.color, 
-                fontSize: '1.8rem', 
-                marginBottom: '0.5rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                textShadow: `0 0 10px ${exp.color}`
-              }}>
+            <div 
+              className={styles.expCard}
+              style={{
+                border: `1px solid ${exp.color}`,
+                boxShadow: `0 0 20px ${exp.color}40, inset 0 0 20px ${exp.color}20`,
+              }}
+            >
+              <h3 
+                className={styles.title}
+                style={{ 
+                  color: exp.color, 
+                  textShadow: `0 0 10px ${exp.color}`
+                }}
+              >
                 {exp.title}
               </h3>
-              <p style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+              <p className={styles.company}>
                 {exp.company}
               </p>
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1rem', letterSpacing: '0.05em', marginBottom: '1.5rem' }}>
+              <p className={styles.date}>
                 {exp.date}
               </p>
               <button 
+                className={styles.button}
                 onClick={(e) => { e.stopPropagation(); setActiveExperience(exp); }}
                 aria-label={`View experience details for ${exp.title} at ${exp.company}`}
                 style={{
-                  background: 'transparent',
                   border: `1px solid ${exp.color}`,
                   color: exp.color,
-                  padding: '0.5rem 1.5rem',
-                  borderRadius: '20px',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '1rem',
-                  cursor: 'pointer',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  transition: 'all 0.3s ease',
                   boxShadow: `0 0 10px ${exp.color}40`
                 }}
                 onMouseOver={(e) => {
