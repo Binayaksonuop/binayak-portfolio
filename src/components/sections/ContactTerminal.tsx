@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import styles from './ContactTerminal.module.css';
@@ -8,6 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 const Typewriter = ({ text, onComplete, start }: { text: string, onComplete?: () => void, start: boolean }) => {
   const [displayed, setDisplayed] = useState('');
   
+  // Store onComplete in a ref so we don't re-trigger useEffect when it changes
+  const onCompleteRef = useRef(onComplete);
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
+  
   useEffect(() => {
     if (!start) return;
     let i = 0;
@@ -16,12 +22,12 @@ const Typewriter = ({ text, onComplete, start }: { text: string, onComplete?: ()
       i++;
       if (i >= text.length) {
         clearInterval(interval);
-        if (onComplete) setTimeout(onComplete, 500); // slight pause
+        if (onCompleteRef.current) setTimeout(onCompleteRef.current, 500); // slight pause
       }
     }, 50); // typing speed
     
     return () => clearInterval(interval);
-  }, [text, start, onComplete]);
+  }, [text, start]); // removed onComplete from dependencies
   
   return <span>{displayed}</span>;
 };
@@ -40,6 +46,24 @@ export const ContactTerminal = () => {
     });
   }, []);
 
+  useEffect(() => {
+    if (step === 0) return;
+    
+    let timeout: ReturnType<typeof setTimeout>;
+    
+    if (step === 1) timeout = setTimeout(() => setStep(2), 1000);
+    else if (step === 2) timeout = setTimeout(() => setStep(3), 800);
+    else if (step === 3) timeout = setTimeout(() => setStep(4), 800);
+    else if (step === 4) timeout = setTimeout(() => setStep(5), 800);
+    else if (step === 5) timeout = setTimeout(() => setStep(6), 1000);
+    
+    return () => clearTimeout(timeout);
+  }, [step]);
+
+  const handleTypewriterComplete = useCallback(() => {
+    setStep(1);
+  }, []);
+
   return (
     <div id="contact" className={styles.terminalContainer} ref={containerRef}>
       <div className={styles.terminal}>
@@ -55,46 +79,17 @@ export const ContactTerminal = () => {
             <Typewriter 
               text="connect binayak" 
               start={started} 
-              onComplete={() => setStep(1)} 
+              onComplete={handleTypewriterComplete} 
             />
           )}
           {step === 0 && started && <div className={styles.cursor}></div>}
         </div>
 
         {step >= 1 && <div className={`${styles.line} ${styles.visible}`}>[SYSTEM] System scanning profile...</div>}
-        {step >= 1 && (
-          <div style={{ display: 'none' }}>
-            {setTimeout(() => { if(step === 1) setStep(2) }, 1000)}
-          </div>
-        )}
-
         {step >= 2 && <div className={`${styles.line} ${styles.visible}`}>[SYSTEM] Experience detected.</div>}
-        {step >= 2 && (
-          <div style={{ display: 'none' }}>
-            {setTimeout(() => { if(step === 2) setStep(3) }, 800)}
-          </div>
-        )}
-
         {step >= 3 && <div className={`${styles.line} ${styles.visible}`}>[SYSTEM] Projects detected.</div>}
-        {step >= 3 && (
-          <div style={{ display: 'none' }}>
-            {setTimeout(() => { if(step === 3) setStep(4) }, 800)}
-          </div>
-        )}
-
         {step >= 4 && <div className={`${styles.line} ${styles.visible}`}>[SYSTEM] Skills synchronized.</div>}
-        {step >= 4 && (
-          <div style={{ display: 'none' }}>
-            {setTimeout(() => { if(step === 4) setStep(5) }, 800)}
-          </div>
-        )}
-
         {step >= 5 && <div className={`${styles.line} ${styles.visible}`} style={{ color: '#27C93F' }}>[SYSTEM] Connection established.</div>}
-        {step >= 5 && (
-          <div style={{ display: 'none' }}>
-            {setTimeout(() => { if(step === 5) setStep(6) }, 1000)}
-          </div>
-        )}
 
         <div className={`${styles.links} ${step >= 6 ? styles.visible : ''}`}>
           <a href="mailto:binayakmaharana2000@gmail.com" className={`interactive ${styles.link}`} aria-label="Send Email">Email</a>
