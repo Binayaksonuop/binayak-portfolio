@@ -157,22 +157,22 @@ const ProjectAura = () => {
     <group ref={groupRef} position={[0, -1, 0]}>
       {/* Outer Sphere Core Glow */}
       <mesh>
-        <sphereGeometry args={[4.5, 32, 32]} />
+        <sphereGeometry args={[4.5, 16, 16]} />
         <meshBasicMaterial color="#00E5FF" transparent opacity={0.02} wireframe />
       </mesh>
       
       {/* Rotating Tech Rings */}
       <group ref={ringsRef}>
         <mesh rotation-x={Math.PI / 2}>
-          <torusGeometry args={[5, 0.02, 16, 100]} />
+          <torusGeometry args={[5, 0.02, 16, 50]} />
           <meshBasicMaterial color="#00E5FF" transparent opacity={0.4} />
         </mesh>
         <mesh rotation-y={Math.PI / 2}>
-          <torusGeometry args={[4.8, 0.02, 16, 100]} />
+          <torusGeometry args={[4.8, 0.02, 16, 50]} />
           <meshBasicMaterial color="#8B5CF6" transparent opacity={0.4} />
         </mesh>
         <mesh rotation-z={Math.PI / 4}>
-          <torusGeometry args={[5.2, 0.01, 16, 100]} />
+          <torusGeometry args={[5.2, 0.01, 16, 50]} />
           <meshBasicMaterial color="#ffffff" transparent opacity={0.2} />
         </mesh>
       </group>

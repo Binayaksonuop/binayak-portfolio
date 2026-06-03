@@ -40,7 +40,7 @@ const tunnelFragmentShader = `
   }
 `;
 
-const particleCount = 2000;
+const particleCount = 800;
 const particleGeometry = new THREE.BufferGeometry();
 const particlePositions = new Float32Array(particleCount * 3);
 for(let i=0; i<particleCount; i++) {
@@ -133,7 +133,7 @@ export const TimeTunnel = () => {
     <group position={[0, 0, 0]}> {/* Position controlled by Scene.tsx */}
       {/* The Tunnel Walls */}
       <mesh>
-        <cylinderGeometry args={[5, 5, 40, 32, 1, true]} /> {/* Open-ended cylinder */}
+        <cylinderGeometry args={[5, 5, 40, 16, 1, true]} /> {/* Open-ended cylinder */}
         <shaderMaterial
           ref={materialRef}
           vertexShader={tunnelVertexShader}

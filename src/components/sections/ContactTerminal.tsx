@@ -41,7 +41,7 @@ export const ContactTerminal = () => {
   }, []);
 
   return (
-    <div className={styles.terminalContainer} ref={containerRef}>
+    <div id="contact" className={styles.terminalContainer} ref={containerRef}>
       <div className={styles.terminal}>
         <div className={styles.header}>
           <div className={styles.dot} style={{ background: '#FF5F56' }}></div>

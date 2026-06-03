@@ -38,7 +38,7 @@ export const About = () => {
   }, []);
 
   return (
-    <div className={styles.aboutContainer} ref={containerRef}>
+    <div id="about" className={styles.aboutContainer} ref={containerRef}>
       <div className={styles.timelineLine}></div>
       {milestones.map((milestone, index) => (
         <div 
