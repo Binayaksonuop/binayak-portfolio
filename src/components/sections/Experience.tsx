@@ -5,11 +5,7 @@ export const Experience = () => {
   // we just need enough height to scroll through it
   return (
     <section id="experience" style={{ height: '200vh', pointerEvents: 'none', overflow: 'hidden' }}>
-      <div style={{ position: 'sticky', top: '50%', textAlign: 'center', opacity: 0.1 }}>
-        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', letterSpacing: '0.2em' }}>
-          ENTERING TIME TUNNEL
-        </h2>
-      </div>
+      {/* Intentionally left blank to allow 3D Time Tunnel cards to be clearly visible without overlapping HTML text */}
     </section>
   );
 };
