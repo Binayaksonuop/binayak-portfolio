@@ -95,7 +95,7 @@ export const ContactTerminal = () => {
           <a href="mailto:binayakmaharana2000@gmail.com" className={`interactive ${styles.link}`} aria-label="Send Email">Email</a>
           <a href="tel:+917684944450" className={`interactive ${styles.link}`} aria-label="Call Phone">Phone</a>
           <a href="https://linkedin.com/in/binayak-maharana" target="_blank" rel="noopener noreferrer" className={`interactive ${styles.link}`} aria-label="LinkedIn Profile">LinkedIn</a>
-          <a href="https://github.com/binayakmaharana" target="_blank" rel="noopener noreferrer" className={`interactive ${styles.link}`} aria-label="GitHub Profile">GitHub</a>
+          <a href="https://github.com/Binayaksonuop" target="_blank" rel="noopener noreferrer" className={`interactive ${styles.link}`} aria-label="GitHub Profile">GitHub</a>
           <a href="/projects/Binayak_Maharana_Resume.pdf" download className={`interactive ${styles.link}`} aria-label="Download Resume">Resume Download</a>
         </div>
         <div className={`${styles.terminalFooter} ${step >= 6 ? styles.visible : ''}`}>

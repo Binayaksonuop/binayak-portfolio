@@ -66,8 +66,7 @@ export const Hero = () => {
 
         <div className={styles.ctaGroup} ref={ctaRef}>
           <button className={`${styles.cta} interactive`} aria-label="View Projects" onClick={() => {
-            // Scroll to the Project Universe (section 4 roughly)
-            window.scrollTo(0, document.body.scrollHeight * 0.8);
+            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
           }}>
             View Projects
           </button>
