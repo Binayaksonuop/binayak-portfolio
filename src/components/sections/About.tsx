@@ -18,23 +18,20 @@ export const About = () => {
   ];
 
   useEffect(() => {
-    textsRef.current.forEach((text) => {
-      if (!text) return;
-      
-      ScrollTrigger.create({
-        trigger: text,
-        start: "top center+=100",
-        end: "bottom center-=100",
-        onEnter: () => text.classList.add(styles.active),
-        onLeave: () => text.classList.remove(styles.active),
-        onEnterBack: () => text.classList.add(styles.active),
-        onLeaveBack: () => text.classList.remove(styles.active),
+    const ctx = gsap.context(() => {
+      textsRef.current.forEach((text) => {
+        if (!text) return;
+        
+        ScrollTrigger.create({
+          trigger: text,
+          start: "top 85%",
+          end: "bottom 15%",
+          toggleClass: styles.active,
+        });
       });
-    });
+    }, containerRef);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   return (

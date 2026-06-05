@@ -44,7 +44,8 @@
 }
 
 .terminalLine {
-  opacity: 0; /* Animated via GSAP */
+  opacity: 0;
+  /* Animated via GSAP */
 }
 
 .contentWrapper {
@@ -109,7 +110,8 @@
 
 .progressBarFill {
   height: 100%;
-  width: 0%; /* Animated via GSAP */
+  width: 0%;
+  /* Animated via GSAP */
   background: #00E5FF;
   box-shadow: 0 0 10px #00E5FF;
 }
@@ -129,10 +131,27 @@
 }
 
 @keyframes glitch-anim {
-  0% { transform: translate(0) }
-  20% { transform: translate(-2px, 2px) }
-  40% { transform: translate(-2px, -2px) }
-  60% { transform: translate(2px, 2px) }
-  80% { transform: translate(2px, -2px) }
-  100% { transform: translate(0) }
+  0% {
+    transform: translate(0)
+  }
+
+  20% {
+    transform: translate(-2px, 2px)
+  }
+
+  40% {
+    transform: translate(-2px, -2px)
+  }
+
+  60% {
+    transform: translate(2px, 2px)
+  }
+
+  80% {
+    transform: translate(2px, -2px)
+  }
+
+  100% {
+    transform: translate(0)
+  }
 }

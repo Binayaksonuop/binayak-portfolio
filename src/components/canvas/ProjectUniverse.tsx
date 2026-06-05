@@ -157,38 +157,35 @@ const ProjectAura = () => {
     <group ref={groupRef} position={[0, -1, 0]}>
       {/* Outer Sphere Core Glow */}
       <mesh>
-        <sphereGeometry args={[4.5, 16, 16]} />
-        <meshBasicMaterial color="#00E5FF" transparent opacity={0.02} wireframe />
+        <sphereGeometry args={[2.2, 12, 12]} />
+        <meshBasicMaterial color="#00E5FF" transparent opacity={0.05} wireframe />
       </mesh>
-      
+
       {/* Rotating Tech Rings */}
       <group ref={ringsRef}>
         <mesh rotation-x={Math.PI / 2}>
-          <torusGeometry args={[5, 0.02, 16, 50]} />
+          <torusGeometry args={[2.6, 0.015, 16, 50]} />
           <meshBasicMaterial color="#00E5FF" transparent opacity={0.4} />
         </mesh>
         <mesh rotation-y={Math.PI / 2}>
-          <torusGeometry args={[4.8, 0.02, 16, 50]} />
+          <torusGeometry args={[2.4, 0.015, 16, 50]} />
           <meshBasicMaterial color="#8B5CF6" transparent opacity={0.4} />
         </mesh>
         <mesh rotation-z={Math.PI / 4}>
-          <torusGeometry args={[5.2, 0.01, 16, 50]} />
+          <torusGeometry args={[2.8, 0.01, 16, 50]} />
           <meshBasicMaterial color="#ffffff" transparent opacity={0.2} />
         </mesh>
       </group>
-
-      {/* Futuristic Grid Floor */}
-      <gridHelper args={[12, 12, '#00E5FF', '#020617']} position={[0, -3, 0]} />
     </group>
   );
 };
 
 // Generic Wrapper for Interactive Project Worlds
-const ProjectWorld = ({ 
-  projectData, 
-  position 
-}: { 
-  projectData: ProjectData, 
+const ProjectWorld = ({
+  projectData,
+  position
+}: {
+  projectData: ProjectData,
   position: [number, number, number]
 }) => {
   const { camera } = useThree();
@@ -200,7 +197,7 @@ const ProjectWorld = ({
     // Cinematic camera fly-through into the project
     // Move camera to just slightly in front of the object
     const worldX = position[0] + 0;
-    const worldY = position[1] - 140;
+    const worldY = position[1] - 125;
     const worldZ = position[2] - 10;
 
     gsap.to(camera.position, {
@@ -235,7 +232,7 @@ const ProjectWorld = ({
         <icosahedronGeometry args={[1.5, 1]} />
         <meshStandardMaterial color="#00E5FF" wireframe opacity={0.3} transparent />
       </mesh>
-      
+
       {/* Inner glowing core */}
       <mesh position={[0, 0, 0]}>
         <octahedronGeometry args={[0.8, 0]} />
@@ -244,7 +241,7 @@ const ProjectWorld = ({
 
       {/* Premium Tech Aura */}
       <ProjectAura />
-      
+
       {/* Title that appears on hover + Screen Reader Access */}
       <Html position={[0, 4, 0]} center style={{ transition: 'opacity 0.5s', opacity: hovered ? 1 : 0 }}>
         <div style={{
@@ -258,8 +255,8 @@ const ProjectWorld = ({
         }}>
           {projectData.name}
         </div>
-        <button 
-          className="sr-only" 
+        <button
+          className="sr-only"
           onClick={handleClick}
           aria-label={`View Case Study for ${projectData.name}`}
           style={{ position: 'absolute', width: '100%', height: '100%', left: 0, top: 0, opacity: 0, cursor: 'pointer' }}
@@ -281,14 +278,14 @@ export const ProjectUniverse = () => {
   return (
     <group position={[0, 0, 0]}> {/* Position controlled by Scene.tsx */}
       <ProjectWorld projectData={projectsData.a4mam} position={[0, 0, 0]} />
-      
+
       {/* Spread out other projects so they are visible within the camera's 45deg FOV */}
       <ProjectWorld projectData={projectsData.lms} position={[-6, 4, -4]} />
-      
+
       <ProjectWorld projectData={projectsData.office} position={[7, 3, -6]} />
-      
+
       <ProjectWorld projectData={projectsData.hrms} position={[-5, -4, -2]} />
-      
+
       <ProjectWorld projectData={projectsData.school} position={[6, -4, -3]} />
     </group>
   );

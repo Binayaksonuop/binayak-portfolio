@@ -44,15 +44,15 @@ const tunnelFragmentShader = `
 const particleCount = 800;
 const particleGeometry = new THREE.BufferGeometry();
 const particlePositions = new Float32Array(particleCount * 3);
-for(let i=0; i<particleCount; i++) {
+for (let i = 0; i < particleCount; i++) {
   // Cylinder distribution
   const radius = 3 + Math.random() * 2;
   const theta = Math.random() * Math.PI * 2;
   const y = (Math.random() - 0.5) * 50; // spread along Y
-  
-  particlePositions[i*3] = Math.cos(theta) * radius;
-  particlePositions[i*3+1] = y;
-  particlePositions[i*3+2] = Math.sin(theta) * radius;
+
+  particlePositions[i * 3] = Math.cos(theta) * radius;
+  particlePositions[i * 3 + 1] = y;
+  particlePositions[i * 3 + 2] = Math.sin(theta) * radius;
 }
 particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
 
@@ -61,7 +61,7 @@ import { useStore } from '../../store/useStore';
 const experiences = [
   {
     id: "a4conserv",
-    title: "Software Developer (Frontend)",
+    title: "Software Developer",
     company: "A4Conserv Pvt Ltd",
     date: "Aug 2025 – Present",
     position: [0, 10, 0] as [number, number, number],
@@ -80,7 +80,7 @@ const experiences = [
   },
   {
     id: "eduvate",
-    title: "Frontend Developer Intern",
+    title: "MERN Stack Developer Intern",
     company: "Eduvate Skills",
     date: "Apr 2025 – Aug 2025",
     position: [0, 0, 0] as [number, number, number],
@@ -122,7 +122,7 @@ export const TimeTunnel = () => {
     if (particlesRef.current) {
       // Rotate particles slightly and move them up to simulate falling down
       particlesRef.current.rotation.y = state.clock.elapsedTime * 0.05;
-      
+
       // Dynamic distortion based on scroll speed (derivative of progress could be used, but we'll use simple oscillation)
       const distortion = Math.sin(state.clock.elapsedTime * 2) * 0.1;
       particlesRef.current.scale.x = 1 + distortion;
@@ -149,10 +149,10 @@ export const TimeTunnel = () => {
 
       {/* Particle Streams inside the tunnel */}
       <points ref={particlesRef} geometry={particleGeometry}>
-        <pointsMaterial 
-          color="#00E5FF" 
-          size={0.05} 
-          transparent 
+        <pointsMaterial
+          color="#00E5FF"
+          size={0.05}
+          transparent
           opacity={0.6}
           blending={THREE.AdditiveBlending}
           depthWrite={false}
@@ -162,18 +162,18 @@ export const TimeTunnel = () => {
       {/* Holographic Experience Panels */}
       {experiences.map((exp, index) => (
         <group key={index} position={exp.position}>
-          <Html center distanceFactor={15} zIndexRange={[100, 0]} transform>
-            <div 
+          <Html center distanceFactor={typeof window !== 'undefined' && window.innerWidth <= 768 ? 6 : 15} zIndexRange={[100, 0]} transform>
+            <div
               className={styles.expCard}
               style={{
                 border: `1px solid ${exp.color}`,
                 boxShadow: `0 0 20px ${exp.color}40, inset 0 0 20px ${exp.color}20`,
               }}
             >
-              <h3 
+              <h3
                 className={styles.title}
-                style={{ 
-                  color: exp.color, 
+                style={{
+                  color: exp.color,
                   textShadow: `0 0 10px ${exp.color}`
                 }}
               >
@@ -185,7 +185,7 @@ export const TimeTunnel = () => {
               <p className={styles.date}>
                 {exp.date}
               </p>
-              <button 
+              <button
                 className={styles.button}
                 onClick={(e) => { e.stopPropagation(); setActiveExperience(exp); }}
                 aria-label={`View experience details for ${exp.title} at ${exp.company}`}

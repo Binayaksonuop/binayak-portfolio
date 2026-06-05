@@ -10,8 +10,10 @@ import { Hero } from './components/sections/Hero';
 import { About } from './components/sections/About';
 import { EngineeringHighlights } from './components/sections/EngineeringHighlights';
 import { Experience, Projects } from './components/sections/Experience';
+import { ProjectShowcase } from './components/sections/ProjectShowcase';
 import { ContactTerminal } from './components/sections/ContactTerminal';
 import { CinematicIntro } from './components/layout/CinematicIntro';
+import { Preloader } from './components/layout/Preloader';
 
 import { EngineeringPhilosophy } from './components/sections/EngineeringPhilosophy';
 import { SystemDesign } from './components/sections/SystemDesign';
@@ -22,6 +24,7 @@ import { ResumeSection } from './components/sections/ResumeSection';
 function App() {
   return (
     <>
+      <Preloader />
       <CinematicIntro />
       <CustomCursor />
       <ScrollManager />
@@ -50,6 +53,7 @@ function App() {
         <EngineeringPhilosophy />
         <Experience />
         <Projects />
+        <ProjectShowcase />
         <SystemDesign />
         <PerformanceEngineering />
         <GithubSection />

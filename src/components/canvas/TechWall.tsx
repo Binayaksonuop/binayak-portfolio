@@ -46,10 +46,10 @@ const HolographicPanel = ({ name, position, delay }: { name: string, position: [
       ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, mx, 0.1);
 
       if (hovered) {
-        materialRef.current.emissiveIntensity = THREE.MathUtils.lerp(materialRef.current.emissiveIntensity, 3, 0.1);
+        materialRef.current.emissiveIntensity = THREE.MathUtils.lerp(materialRef.current.emissiveIntensity, 2, 0.1);
         ref.current.position.z = THREE.MathUtils.lerp(ref.current.position.z, position[2] + 1, 0.1);
       } else {
-        materialRef.current.emissiveIntensity = THREE.MathUtils.lerp(materialRef.current.emissiveIntensity, 0.8 + Math.sin(state.clock.elapsedTime * 3 + delay) * 0.4, 0.1);
+        materialRef.current.emissiveIntensity = THREE.MathUtils.lerp(materialRef.current.emissiveIntensity, 0.2 + Math.sin(state.clock.elapsedTime * 3 + delay) * 0.1, 0.1);
         ref.current.position.z = THREE.MathUtils.lerp(ref.current.position.z, position[2], 0.1);
       }
     }
@@ -81,11 +81,11 @@ const HolographicPanel = ({ name, position, delay }: { name: string, position: [
 
       <Html transform distanceFactor={10} position={[0, 0, 0.1]} style={{ pointerEvents: 'none' }}>
         <div style={{
-          color: hovered ? '#FFFFFF' : '#00E5FF',
+          color: hovered ? '#FFFFFF' : 'rgba(0, 229, 255, 0.25)',
           fontFamily: 'var(--font-heading)',
           fontSize: '2rem',
           letterSpacing: '0.1em',
-          textShadow: hovered ? '0 0 20px #FFFFFF' : '0 0 10px #00E5FF',
+          textShadow: hovered ? '0 0 20px #FFFFFF' : 'none',
           transition: 'all 0.3s'
         }}>
           {name}

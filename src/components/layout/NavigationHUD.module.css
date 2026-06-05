@@ -77,22 +77,20 @@
 
 @media (max-width: 768px) {
   .hudContainer {
-    padding: 1rem;
-    flex-wrap: wrap;
-    gap: 1rem;
+    padding: 1rem 1.5rem;
+    flex-wrap: nowrap;
   }
+  
   .navLinks {
-    width: 100%;
-    justify-content: center;
-    gap: 1.5rem;
-    order: 3;
+    display: none; /* Hide standard links on mobile for a cleaner, premium UI. They can just scroll. */
   }
-  .navLink {
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
+  
+  .logo {
+    font-size: 1.2rem;
   }
+  
   .a4mamBtn {
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1.2rem;
     font-size: 0.8rem;
   }
 }

@@ -46,7 +46,7 @@ const SkillPlanet = ({ name, position, color, radius, speed, offset, size }: {
         <meshStandardMaterial 
           color={color} 
           emissive={color}
-          emissiveIntensity={hovered ? 2 : 0.5} 
+          emissiveIntensity={hovered ? 3 : 1.5} 
           wireframe={!hovered}
         />
         
@@ -87,7 +87,12 @@ export const SkillsGalaxy = () => {
       {/* Central Star */}
       <mesh>
         <sphereGeometry args={[2, 32, 32]} />
-        <meshStandardMaterial color="#00E5FF" emissive="#00E5FF" emissiveIntensity={2} wireframe />
+        <meshStandardMaterial 
+          color="#00E5FF" 
+          emissive="#00E5FF" 
+          emissiveIntensity={2} 
+          wireframe 
+        />
       </mesh>
       
       {/* Orbital Rings */}
