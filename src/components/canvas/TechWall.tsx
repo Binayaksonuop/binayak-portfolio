@@ -4,7 +4,7 @@ import { Html } from '@react-three/drei';
 import * as THREE from 'three';
 
 const technologies = [
-  "React", "Angular", "TypeScript", "JavaScript", 
+  "React", "Angular", "TypeScript", "JavaScript",
   "Three.js", "GSAP", "Node.js", "Git", "Figma"
 ];
 
@@ -14,7 +14,7 @@ const cornerGeo = new THREE.BoxGeometry(0.2, 0.2, 0.05);
 const cornerMat = new THREE.MeshBasicMaterial({ color: "#8B5CF6" });
 const lineMat = new THREE.LineBasicMaterial({ color: "#00E5FF", transparent: true, opacity: 0.2 });
 
-const gridData: {name: string, position: [number, number, number], delay: number}[] = [];
+const gridData: { name: string, position: [number, number, number], delay: number }[] = [];
 let i = 0;
 for (let row = -1; row <= 1; row++) {
   for (let col = -1; col <= 1; col++) {
@@ -38,10 +38,10 @@ const HolographicPanel = ({ name, position, delay }: { name: string, position: [
     if (ref.current && materialRef.current) {
       // Floating animation
       ref.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 2 + delay) * 0.2;
-      
+
       const mx = (state.pointer.x * Math.PI) * 0.1;
       const my = (state.pointer.y * Math.PI) * 0.1;
-      
+
       ref.current.rotation.x = THREE.MathUtils.lerp(ref.current.rotation.x, -my, 0.1);
       ref.current.rotation.y = THREE.MathUtils.lerp(ref.current.rotation.y, mx, 0.1);
 
@@ -56,24 +56,24 @@ const HolographicPanel = ({ name, position, delay }: { name: string, position: [
   });
 
   return (
-    <group 
-      ref={ref} 
+    <group
+      ref={ref}
       position={position}
       onPointerOver={(e) => { e.stopPropagation(); setHovered(true); document.body.style.cursor = 'pointer'; }}
       onPointerOut={() => { setHovered(false); document.body.style.cursor = 'default'; }}
     >
       <mesh geometry={planeGeo}>
-        <meshStandardMaterial 
+        <meshStandardMaterial
           ref={materialRef}
-          color="#00E5FF" 
-          emissive="#00E5FF" 
-          transparent 
-          opacity={0.1} 
-          side={THREE.DoubleSide} 
+          color="#00E5FF"
+          emissive="#00E5FF"
+          transparent
+          opacity={0.1}
+          side={THREE.DoubleSide}
           wireframe
         />
       </mesh>
-      
+
       <mesh geometry={cornerGeo} material={cornerMat} position={[-1.5, 0.75, 0]} />
       <mesh geometry={cornerGeo} material={cornerMat} position={[1.5, 0.75, 0]} />
       <mesh geometry={cornerGeo} material={cornerMat} position={[-1.5, -0.75, 0]} />

@@ -168,13 +168,19 @@ export const TimeTunnel = () => {
               style={{
                 border: `1px solid ${exp.color}`,
                 boxShadow: `0 0 20px ${exp.color}40, inset 0 0 20px ${exp.color}20`,
+                width: typeof window !== 'undefined' && window.innerWidth <= 768 ? '280px' : '450px',
+                whiteSpace: 'normal',
+                wordWrap: 'break-word'
               }}
             >
               <h3
                 className={styles.title}
                 style={{
                   color: exp.color,
-                  textShadow: `0 0 10px ${exp.color}`
+                  textShadow: `0 0 10px ${exp.color}`,
+                  whiteSpace: 'normal',
+                  wordWrap: 'break-word',
+                  fontSize: typeof window !== 'undefined' && window.innerWidth <= 768 ? '1.2rem' : '1.8rem'
                 }}
               >
                 {exp.title}

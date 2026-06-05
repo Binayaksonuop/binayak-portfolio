@@ -18,12 +18,12 @@ const skills = [
   { name: 'HTML/CSS', color: '#E34F26', distance: 19.5, speed: 0.08, size: 0.3 },
 ];
 
-const SkillPlanet = ({ name, position, color, radius, speed, offset, size }: { 
-  name: string, position: [number, number, number], color: string, radius: number, speed: number, offset: number, size: number 
+const SkillPlanet = ({ name, position, color, radius, speed, offset, size }: {
+  name: string, position: [number, number, number], color: string, radius: number, speed: number, offset: number, size: number
 }) => {
   const ref = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
-  
+
   useFrame((state) => {
     if (ref.current) {
       // Orbital mechanics
@@ -36,20 +36,20 @@ const SkillPlanet = ({ name, position, color, radius, speed, offset, size }: {
 
   return (
     <group>
-      <mesh 
-        ref={ref} 
+      <mesh
+        ref={ref}
         position={position}
         onPointerOver={(e) => { e.stopPropagation(); setHovered(true); document.body.style.cursor = 'pointer'; }}
         onPointerOut={() => { setHovered(false); document.body.style.cursor = 'default'; }}
       >
         <sphereGeometry args={[size, 32, 32]} />
-        <meshStandardMaterial 
-          color={color} 
+        <meshStandardMaterial
+          color={color}
           emissive={color}
-          emissiveIntensity={hovered ? 3 : 1.5} 
+          emissiveIntensity={hovered ? 3 : 1.5}
           wireframe={!hovered}
         />
-        
+
         {/* Holographic Text Label */}
         <Html distanceFactor={15} center style={{ pointerEvents: 'none' }}>
           <div style={{
@@ -87,14 +87,14 @@ export const SkillsGalaxy = () => {
       {/* Central Star */}
       <mesh>
         <sphereGeometry args={[2, 32, 32]} />
-        <meshStandardMaterial 
-          color="#00E5FF" 
-          emissive="#00E5FF" 
-          emissiveIntensity={2} 
-          wireframe 
+        <meshStandardMaterial
+          color="#00E5FF"
+          emissive="#00E5FF"
+          emissiveIntensity={2}
+          wireframe
         />
       </mesh>
-      
+
       {/* Orbital Rings */}
       {skills.map((skill, i) => (
         <mesh key={i} rotation-x={Math.PI / 2}>
@@ -105,7 +105,7 @@ export const SkillsGalaxy = () => {
 
       {/* Technology Planets */}
       {skills.map((skill, index) => (
-        <SkillPlanet 
+        <SkillPlanet
           key={index}
           name={skill.name}
           position={[
